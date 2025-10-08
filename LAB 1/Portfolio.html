@@ -1,0 +1,353 @@
+<!--
+  Project: Personal Portfolio Website
+  Lab: Web Development I - Lab 1
+  Page: index.html
+  Description: One-page portfolio website built using semantic HTML tags
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Krish Behura | Portfolio</title>
+  <style>
+    /* === Global Theme and Layout === */
+    :root {
+      --primary-color: #0077cc;
+      --secondary-color: #005fa3;
+      --background-light: #f9f9f9;
+      --text-dark: #222;
+      --text-light: #555;
+      --font-heading: 'Montserrat', sans-serif;
+      --font-body: 'Open Sans', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-body);
+      line-height: 1.6;
+      margin: 0;
+      background-color: #ffffff;
+      color: var(--text-dark);
+      scroll-behavior: smooth;
+    }
+
+    h1, h2, h3 {
+      font-family: var(--font-heading);
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
+
+    /* === Header / Hero Section === */
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2em;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* === Navigation Bar === */
+    nav {
+      background: #222;
+      padding: 12px;
+      text-align: center;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--primary-color);
+    }
+
+    /* === About Section === */
+    #about {
+      text-align: center;
+      background-color: var(--background-light);
+      padding: 50px 20px;
+      border-radius: 12px;
+    }
+
+    .about-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .profile-video {
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #0077cc;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    #about p {
+      font-size: 1.1em;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    /* === Projects Section === */
+    #projects {
+      background-color: #fff;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .projects-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .project {
+      background-color: var(--background-light);
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+    }
+
+    .project h3 {
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+
+    .project p {
+      color: var(--text-light);
+      font-size: 1em;
+    }
+
+    /* === Skills Section === */
+    #skills {
+      background-color: var(--background-light);
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    #skills table {
+      width: 100%;
+      max-width: 600px;
+      margin: 20px auto;
+      border-collapse: collapse;
+    }
+
+    #skills th, #skills td {
+      border: 1px solid #ddd;
+      padding: 12px;
+    }
+
+    #skills th {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    /* === Contact Section === */
+    #contact {
+      background-color: #fff;
+      padding: 60px 20px;
+      text-align: center;
+      border-radius: 12px;
+    }
+
+    .contact-form {
+      max-width: 450px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .contact-form label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1em;
+    }
+
+    .contact-form button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: var(--primary-color);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background-color 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      background-color: var(--secondary-color);
+    }
+
+    /* === Footer === */
+    footer {
+      text-align: center;
+      background-color: #222;
+      color: #fff;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    /* === Accessibility === */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #000;
+      color: #fff;
+      padding: 8px;
+      z-index: 100;
+    }
+    .skip-link:focus {
+      top: 0;
+    }
+
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header>
+    <h1>Welcome to My Portfolio</h1>
+    <p>Hello! I'm <strong>Krish Behura</strong>, an aspiring web developer passionate about creating accessible and modern web experiences.</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- About Section -->
+    <section id="about">
+      <h2>About Me</h2>
+      <div class="about-container">
+        <video autoplay loop muted playsinline width="180" height="180" class="profile-video">
+          <source src="videos/profile.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <p>
+          Hi, I’m <strong>Krish Behura</strong> — a Computer Science student and aspiring web developer.  
+          I enjoy building responsive, accessible websites and exploring how design and functionality come together to create great user experiences.
+        </p>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <h2>My Projects</h2>
+      <div class="projects-container">
+        <article class="project">
+          <h3>🌐 Portfolio Website</h3>
+          <p>A responsive one-page portfolio built with semantic HTML and CSS for clean structure and accessibility.</p>
+        </article>
+
+        <article class="project">
+          <h3>☁️ Weather App</h3>
+          <p>Displays real-time weather data using an open weather API, designed for both desktop and mobile screens.</p>
+        </article>
+
+        <article class="project">
+          <h3>📝 Task Tracker</h3>
+          <p>A simple to-do list application that saves your tasks in local storage for persistent tracking.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+      <h2>Technical Skills</h2>
+      <table>
+        <tr>
+          <th>Skill / Tool</th>
+          <th>Proficiency Level</th>
+        </tr>
+        <tr>
+          <td>HTML</td>
+          <td>Intermediate</td>
+        </tr>
+        <tr>
+          <td>CSS</td>
+          <td>Intermediate</td>
+        </tr>
+        <tr>
+          <td>JavaScript</td>
+          <td>Beginner</td>
+        </tr>
+        <tr>
+          <td>Git & GitHub</td>
+          <td>Beginner</td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <p>If you’d like to get in touch, please fill out the form below:</p>
+
+      <form action="#" method="post" class="contact-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" placeholder="Type your message here" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Krish Behura. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
