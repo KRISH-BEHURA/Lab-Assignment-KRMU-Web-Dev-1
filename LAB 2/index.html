@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Krish Behura — Portfolio (Redesigned)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Grotesk:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="topbar">
+      <a class="brand" href="#">
+        <div class="logo" aria-hidden="true">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+            <rect x="2" y="2" width="20" height="20" rx="5" fill="white" opacity="0.08"/>
+            <path d="M6 12h12M6 7h12M6 17h12" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/>
+          </svg>
+        </div>
+        <div>
+          <h1>Krish Behura</h1>
+          <p>UX / UI • Web Dev</p>
+        </div>
+      </a>
+
+      <div class="controls">
+        <nav aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="toggle" role="toolbar" aria-label="Theme toggle">
+          <button id="lightBtn" title="Light mode" aria-pressed="false">☀️</button>
+          <button id="darkBtn" class="active" title="Dark mode" aria-pressed="true">🌙</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero">
+
+      <div class="hero-card fade-in" data-delay="0">
+        <h2>Hello — I'm Krish</h2>
+        <p>I'm a Computer Science student focused on building accessible, minimal, and delightful user interfaces. I craft clean front-end code and thoughtful design systems.</p>
+
+        <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+          <a class="cta" href="#projects" style="text-decoration:none;padding:10px 14px;border-radius:10px;background:var(--accent-plain);color:white;">View Projects</a>
+          <a href="#contact" style="text-decoration:none;padding:10px 14px;border-radius:10px;border:1px solid var(--glass-border);color:var(--subtext)">Hire / Contact</a>
+        </div>
+      </div>
+
+      <div class="avatar-wrap">
+        <div class="avatar fade-in" data-delay="120">
+          <video autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;" src="videos/profile.mp4"></video>
+        </div>
+      </div>
+
+    </div>
+
+    <section id="projects">
+      <h2 class="section-title">Selected Projects</h2>
+      <div class="grid">
+        <article class="card fade-in" data-delay="80">
+          <h3>Portfolio Website</h3>
+          <p>Responsive one-page portfolio built with semantic HTML, accessible components, and a lightweight stylesheet.</p>
+        </article>
+
+        <article class="card fade-in" data-delay="140">
+          <h3>Weather App</h3>
+          <p>Real-time weather UI using an open weather API; emphasizes micro-interactions and clear information hierarchy.</p>
+        </article>
+
+        <article class="card fade-in" data-delay="200">
+          <h3>Task Tracker</h3>
+          <p>Minimal to-do app with localStorage persistence, keyboard-friendly controls, and offline-first thinking.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2 class="section-title">Technical Skills</h2>
+      <table class="skills-table fade-in" data-delay="240">
+        <caption style="text-align:left;margin-bottom:8px;color:var(--subtext)">Tools and comfort level</caption>
+        <thead>
+          <tr><th>Skill</th><th>Level</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>HTML</td><td>Intermediate</td></tr>
+          <tr><td>CSS</td><td>Intermediate</td></tr>
+          <tr><td>JavaScript</td><td>Beginner</td></tr>
+          <tr><td>Git & GitHub</td><td>Beginner</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="contact" style="margin-bottom:36px;">
+      <h2 class="section-title">Contact Me</h2>
+      <div class="contact">
+        <form class="form-card fade-in" data-delay="280" onsubmit="event.preventDefault(); alert('Message sent — demo');">
+          <label for="name">Name</label>
+          <input id="name" name="name" placeholder="Your name" required />
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required />
+
+          <label for="msg">Message</label>
+          <textarea id="msg" name="message" rows="5" placeholder="Short message" required></textarea>
+
+          <button class="cta" type="submit">Send message</button>
+        </form>
+
+        <div class="card fade-in" data-delay="320" style="align-self:start;">
+          <h3>Availability</h3>
+          <p style="color:var(--subtext)">Open for internships and freelance work. Remote or hybrid preferred.</p>
+
+          <h4 style="margin-top:12px;margin-bottom:6px">Contact</h4>
+          <p style="margin:0;color:var(--subtext)">krish.behura@example.com</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Krish Behura · Built with ❤️ · Accessible & responsive design</p>
+    </footer>
+
+  </div>
+
+  <script>
+    const root = document.documentElement;
+    const lightBtn = document.getElementById('lightBtn');
+    const darkBtn = document.getElementById('darkBtn');
+
+    function applyMode(mode){
+      if(mode === 'light'){
+        root.classList.add('light');
+        lightBtn.classList.add('active');
+        darkBtn.classList.remove('active');
+      } else {
+        root.classList.remove('light');
+        darkBtn.classList.add('active');
+        lightBtn.classList.remove('active');
+      }
+      localStorage.setItem('site-mode', mode);
+    }
+
+    const saved = localStorage.getItem('site-mode');
+    if(saved) applyMode(saved);
+
+    lightBtn.addEventListener('click', ()=> applyMode('light'));
+    darkBtn.addEventListener('click', ()=> applyMode('dark'));
+
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      })
+    },{threshold:0.15});
+
+    document.querySelectorAll('.fade-in').forEach((el)=>{
+      const delay = el.getAttribute('data-delay') || 0;
+      el.style.transition = `opacity 600ms cubic-bezier(.2,.9,.3,1) ${delay}ms, transform 600ms ${delay}ms`;
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
